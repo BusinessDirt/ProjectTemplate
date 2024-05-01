@@ -2,14 +2,18 @@ import os
 import subprocess
 import platform
 
-from SetupPython import PythonConfiguration as PythonRequirements
+# python setup
+from Setup.SetupPython import PythonConfiguration as PythonRequirements
 PythonRequirements.validate()
 
-from SetupPremake import PremakeConfiguration as PremakeRequirements
+# premake setup
+from Setup.SetupPremake import PremakeConfiguration as PremakeRequirements
 os.chdir('../../') # change from scripts/python directory to root
-
 premakeInstalled = PremakeRequirements.validate()
 
+# other requirements
+
+# submodules and build files
 print("\nUpdating submodules...")
 subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
 
