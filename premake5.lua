@@ -14,6 +14,9 @@ workspace "New Project"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+group "Dependencies"
+group ""
+
 group "Core"
 	include "Core/premake5.lua"
 group ""

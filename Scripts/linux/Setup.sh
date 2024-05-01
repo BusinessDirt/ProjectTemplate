@@ -1,3 +1,3 @@
-pushd python
+pushd ../python
 py Setup.py
 popd

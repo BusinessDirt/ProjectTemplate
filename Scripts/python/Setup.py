@@ -16,15 +16,15 @@ subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
 if (premakeInstalled):
     if platform.system() == "Windows":
         print("\nRunning premake...")
-        subprocess.call([os.path.abspath("./scripts/Win-GenProjects.bat"), "nopause"])
+        subprocess.call([os.path.abspath("./scripts/windows/Win-GenProjects.bat"), "nopause"])
 
     if platform.system() == "Linux":
         print("\nRunning premake...")
-        subprocess.call([os.path.abspath("./scripts/Linux-GenProjects.sh")])
+        subprocess.call([os.path.abspath("./scripts/linux/Linux-GenProjects.sh")])
 
     if platform.system() == "Darwin":
         print("\nRunning premake...")
-        subprocess.call([os.path.abspath("./scripts/MacOSX-GenProjects.sh")])
+        subprocess.call([os.path.abspath("./scripts/macosx/MacOSX-GenProjects.sh")])
 
     print("\nSetup completed!")
 else:
