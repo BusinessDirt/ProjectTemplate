@@ -1,5 +1,5 @@
-project "App"
-   kind "ConsoleApp"
+project "Core"
+   kind "StaticLib"
    language "C++"
    cppdialect "C++20"
    targetdir "Binaries/%{cfg.buildcfg}"
@@ -9,23 +9,23 @@ project "App"
 
    includedirs
    {
-      "Source",
-
-	  -- Include Core
-	  "../Core/Source"
+      "Source"
    }
 
-   links
-   {
-      "Core"
-   }
-
-   targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
-   objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
+   targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+   objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
    filter "system:windows"
        systemversion "latest"
        defines { "WINDOWS" }
+
+   filter "system:linux"
+       systemversion "latest"
+       defines { "LINUX" }
+
+   filter "system:macosx"
+       systemversion "latest"
+       defines { "MACOSX" }
 
    filter "configurations:Debug"
        defines { "DEBUG" }

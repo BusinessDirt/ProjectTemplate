@@ -1,14 +1,35 @@
-# Directories
+# Binaries
+**/bin/
+bin-int/
+Intermediates/
+
+# Visual Studio files and folder
 .vs/
-Binaries/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
 
-# Files
-*.vcxproj
-*.vcxproj.user
-*.vcxproj.filters
-*.sln
-*.log
+# cmake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
 Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
 
-# Exclude
-!Vendor/Binaries
+## Xcode User settings
+xcuserdata/
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+# Directories
+Scripts/python/__pycache__
