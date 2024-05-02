@@ -15,6 +15,7 @@ workspace "New Project"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
+   include "vendor/premake"
 group ""
 
 group "Core"
