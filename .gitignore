@@ -27,7 +27,9 @@ _deps
 ## Xcode User settings
 xcuserdata/
 *.pbxproj
-*.xcworkspacedata
+*.xcworkspace/
+*.xcodeproj/
+.DS_Store
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
