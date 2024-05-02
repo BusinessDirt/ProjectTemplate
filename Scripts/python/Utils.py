@@ -1,11 +1,14 @@
 import sys
 import os
+import platform
 
 import requests
 import time
 import urllib3 as urllib
 
 from zipfile import ZipFile
+import gzip
+import tarfile
 
 def download_file(url, filepath):
     path = filepath
@@ -56,10 +59,23 @@ def download_file(url, filepath):
                 
     sys.stdout.write('\n')
 
-def unzip_file(filepath, delete_zip_file=True):
+def unzip_file(filepath: str, delete_zip_file=True):
     path = os.path.abspath(filepath)
     location = os.path.dirname(path)
 
+    if filepath.endswith(".zip"):
+        __unzip_zip__(path, location)
+    elif filepath.endswith(".gz"):
+        __unzip_gz__(path, location)
+    else:
+        print("Unsupported file format.")
+        return
+
+
+    if delete_zip_file:
+        os.remove(path)
+
+def __unzip_zip__(path, location):
     content = dict()
     size = 0
     with ZipFile(path, 'r') as folder:
@@ -84,8 +100,10 @@ def unzip_file(filepath, delete_zip_file=True):
             __speed_write_helper__(done, percentage, avg_speed)
     sys.stdout.write('\n')
 
-    if delete_zip_file:
-        os.remove(path)
+def __unzip_gz__(path, location):
+    with gzip.open(path, 'rb') as f:
+        with tarfile.open(fileobj=f, mode='r') as tar:
+            tar.extractall(path=location)
 
 
 def __percentage_done_helper__(x, total):

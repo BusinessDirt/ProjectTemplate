@@ -24,11 +24,11 @@ if (premakeInstalled):
 
     if platform.system() == "Linux":
         print("\nRunning premake...")
-        subprocess.call([os.path.abspath("./scripts/linux/Linux-GenProjects.sh")])
+        subprocess.call(["sh", os.path.abspath("./scripts/linux/Linux-GenProjects.sh")])
 
     if platform.system() == "Darwin":
         print("\nRunning premake...")
-        subprocess.call([os.path.abspath("./scripts/macosx/MacOSX-GenProjects.sh")])
+        subprocess.call(["sh", os.path.abspath("./scripts/macosx/MacOSX-GenProjects.sh")])
 
     print("\nSetup completed!")
 else:

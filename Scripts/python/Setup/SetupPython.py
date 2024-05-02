@@ -1,4 +1,5 @@
 import sys
+import platform
 import subprocess
 import importlib.util as importlib_util
 
@@ -39,9 +40,15 @@ class PythonConfiguration:
             permission_granted = (user_input == 'y')
 
         print(f"Installing {package_name} module...")
-        subprocess.check_call(["py", "-m", "pip", "install", package_name])
+        subprocess.check_call([cls.os_specific_python_command(), "-m", "pip", "install", package_name])
 
         return cls.__validate_package__(package_name)
+
+    @classmethod
+    def os_specific_python_command(cls) -> str:
+        if platform.system() == "Windows": return "py"
+        if platform.system() == "Linux": return "python"
+        if platform.system() == "Darwin": return "python3"
     
 if __name__ == "__main__":
     validated: bool = PythonConfiguration.validate()

@@ -1,1 +1,2 @@
-vendor/bin/premake/premake5 --cc=clang gmake2
+echo "$PWD"
+./vendor/premake/bin/premake5 --cc=clang xcode4
